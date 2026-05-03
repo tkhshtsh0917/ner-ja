@@ -39,7 +39,8 @@ def _(Path, json, updated):
 
     with file_path.open(mode="w", encoding="utf-8") as f:
         for row in updated:
-            f.write(f"{json.dumps(row, ensure_ascii=False)}\n")
+            if len(row["output"]["entities"]) > 0:
+                f.write(f"{json.dumps(row, ensure_ascii=False)}\n")
     return
 
 
